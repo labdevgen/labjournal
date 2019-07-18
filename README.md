@@ -118,17 +118,14 @@
 4. dA-tailing - фрагмент Кленова, dATP
 5. ДНК-лигаза, Т-tailed биотин-меченый bridge-адаптер, blunt-ended Bridge безбиотиновый
 
-Bridge:
+**Структуры:**
 
+	bridge                 blunt
+	
 	 P        Biot
 	 |        |
-	 GCTGAGGGATC
-	TCGACTCC
-
-Blunt:
-
-	GCTGAGGGAC
-	CGACTCC
+	 GCTGAGGGATC           GCTGAGGGAC
+	TCGACTCC               CGACTCC
 
 6. Полинуклеотидкиназа (прикрепляет фосфат к 5'), затем лигаза
 7. Растворение белков и очистка ДНК
