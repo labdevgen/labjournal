@@ -104,7 +104,11 @@
 	GGATCCCTCAGCGCTGAGGGATCCCTCAGCAGATCGGAAGAGCACACGTC
 
 Искомый палиндром был обнаружен в третьей (неизвестной) последовательности - GGATCC**CTCAGCGCTGAG**GGATCCCTCAGCAGATCGGAAGAGCACACGTC.
-Также выяснено, что палиндром является частью ещё более крупного палиндрома - GGATCCCTCAGCGCTGAGGGATCC.
+Также выяснено, что палиндром является частью ещё более крупного палиндрома, входящего в эту последовательность - GGATCCCTCAGCGCTGAGGGATCC.
+В сочетании с вырезанным нами палиндромом он даёт ещё более длинный палиндром - CCTCAGC**GCTGAGGGATCCCTCAGCGCTGAGGGATCCCTCAGC**AGATCGGAAGAGCACACGTC.
 Было решено построить детально модель HiC и секвенирования по методике, чтобы понять, что произошло.
 
 ### Модель HiC и секвенирования
+
+Методика и принцип описаны в следующих статьях: [раз](https://www.ncbi.nlm.nih.gov/pubmed/25437436), [два](https://www.ncbi.nlm.nih.gov/pubmed/29382556).
+
