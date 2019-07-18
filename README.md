@@ -103,4 +103,7 @@
 	------------------GGATCCCTCAGCAGATCGGAAGAGCACACGTCTGAACTCCAGTCACATCA
 	GGATCCCTCAGCGCTGAGGGATCCCTCAGCAGATCGGAAGAGCACACGTC
 
-Искомый палиндром был обнаружен в третьей (неизвестной) последовательности.
+Искомый палиндром был обнаружен в третьей (неизвестной) последовательности - GGATCCCTCAGCGCTGAGGGATCCCTCAGCAGATCGGAAGAGCACACGTC.
+Было решено построить детально модель HiC и секвенирования по методике, чтобы понять, что произошло.
+
+### Модель HiC и секвенирования
