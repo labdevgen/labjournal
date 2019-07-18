@@ -7,6 +7,9 @@
 В результатах Exo-C с помощью приложения *FastQC* был обнаружен неизвестный палиндромный участок `CTCAGCGCTGAG`.
 Частота его встречаемости, согласно данным скрипта *palindrome.py*, составляет 22.69%, в начале (5' конец, вторая позиция) - 6.88%.
 
+<details>
+<summary>palindrome.py</summary>
+<p><pre>
 	import gzip
 	import sys
 	
@@ -53,7 +56,11 @@
 	
 	input0.close()
 	output0.close()
+</pre></p>
+</details>
 
+> Hello
+>> Hellon't
 
 Было решено узнать, что собой представляет этот участок.
 
