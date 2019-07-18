@@ -10,6 +10,7 @@
 <details>
 <summary>palindrome.py</summary>
 <p>
+<!--  -->
 ```python
 import gzip
 import sys
@@ -58,6 +59,7 @@ print('\n')
 input0.close()
 output0.close()
 ```
+
 </p></details>
 
 Было решено узнать, что собой представляет этот участок.
