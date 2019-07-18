@@ -9,8 +9,8 @@
 
 <details>
 <summary>palindrome.py</summary>
-<p><pre>
-
+<p>
+```python
 import gzip
 import sys
 
@@ -57,9 +57,8 @@ print('\n')
 
 input0.close()
 output0.close()
-
-</pre></p>
-</details>
+```
+</p></details>
 
 Было решено узнать, что собой представляет этот участок.
 
@@ -71,11 +70,8 @@ output0.close()
 
 С помощью *cutadapt* были найдены последовательности, содержащие искомый палиндром.
 
-	$ cutadapt -g ^CCTCAGCGCTGAG --trimmed-only -o ./output.ca.fastq ./sample.fastq.gz
-
-<details>
-<summary>Вывод cutadapt</summary>
-<p><pre>
+```
+$ cutadapt -g ^CCTCAGCGCTGAG --trimmed-only -o ./output.ca.fastq ./sample.fastq.gz
 
 This is cutadapt 1.18 with Python 3.7.3
 Command line parameters: -g ^CCTCAGCGCTGAG --trimmed-only -o ./output.ca.fastq ./sample.fastq.gz
@@ -103,9 +99,7 @@ length  count   expect  max.err error counts
 12      938313  7.6     1       0 938313
 13      9066637 1.9     1       8892621 174016
 14      85183   1.9     1       0 85183
-
-</pre></p>
-</details>
+```
 
 Далее результаты были снова обработаны с помощью *FastQC* ([данные здесь](./FastQC_results/fastqc_190718_1327.html)).
 Программа обнаружила 3 длинных оверрепрезентированных последовательности, две из которых были определены как **TruSeq Adapter**, и одну неизвестную последовательность.
@@ -113,9 +107,11 @@ length  count   expect  max.err error counts
 
 Далее последовательности были выровнены относительно друг друга.
 
-	-----------------------------GAGATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTAT
-	------------------GGATCCCTCAGCAGATCGGAAGAGCACACGTCTGAACTCCAGTCACATCA
-	GGATCCCTCAGCGCTGAGGGATCCCTCAGCAGATCGGAAGAGCACACGTC
+```
+-----------------------------GAGATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTAT
+------------------GGATCCCTCAGCAGATCGGAAGAGCACACGTCTGAACTCCAGTCACATCA
+GGATCCCTCAGCGCTGAGGGATCCCTCAGCAGATCGGAAGAGCACACGTC
+```
 
 Искомый палиндром был обнаружен в третьей (неизвестной) последовательности - GGATCC**CTCAGCGCTGAG**GGATCCCTCAGCAGATCGGAAGAGCACACGTC.
 Также выяснено, что палиндром является частью ещё более крупного палиндрома, входящего в эту последовательность - GGATCCCTCAGCGCTGAGGGATCC.
@@ -132,14 +128,13 @@ length  count   expect  max.err error counts
 4. dA-tailing - фрагмент Кленова, dATP
 5. ДНК-лигаза, Т-tailed биотин-меченый bridge-адаптер, blunt-ended Bridge безбиотиновый
 
-**Структуры:**
-
-	bridge                 blunt
-	
-	 P        Biot
-	 |        |
-	 GCTGAGGGATC           GCTGAGGGAC
-	TCGACTCC               CGACTCC
+```
+bridge                 blunt
+ P        Biot
+ |        |
+ GCTGAGGGATC           GCTGAGGGAC
+TCGACTCC               CGACTCC
+```
 
 6. Полинуклеотидкиназа (прикрепляет фосфат к 5'), затем лигаза
 7. Растворение белков и очистка ДНК
