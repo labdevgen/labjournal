@@ -210,7 +210,7 @@ output0.close()
 Результаты:
 
 * Двойной blunt-адаптер встречается в 0.6% ридов.
-Пики наблюдаются на позициях 0 (148487), 11 (25423), небольшой пик на 18 (6799).
+Пики наблюдаются на позициях 0, 11, небольшой пик на 18 ([данные](./scripts_results/report_palindrome_doubleblunt_190719.txt)).
 
 ```
 $ python3 ./palindrome_doubleblunt.py
@@ -221,8 +221,10 @@ We're looking for: CCTCAGCGCTGAGGGAC (Double Blunt adapter)
 Found: 775465 | Total: 128195238 (0.604909%)
 ```
 
+![График doubleblunt](./scripts_results/graph_doubleblunt_190719.png)
+
 * Одиночный blunt-адаптер встречается в 1.42% ридов.
-Пики на позициях 0 (412929), 7 (153163), 18 (34185).
+Пики на позициях 0, 7 и 18 ([данные](./scripts_results/report_palindrome_blunt_190719.txt)).
 
 ```
 $ python3 ./palindrome_blunt.py
@@ -233,3 +235,4 @@ We're looking for: GCTGAGGGAC (Blunt adapter)
 Found: 1816057 | Total: 128195238 (1.416634%)
 ```
 
+![График blunt](./scripts_results/graph_blunt_190719.png)
