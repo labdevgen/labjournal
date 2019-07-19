@@ -122,6 +122,7 @@ GGATCCCTCAGCGCTGAGGGATCCCTCAGCAGATCGGAAGAGCACACGTC
 
 ```
 bridge                 blunt
+
  P        Biot
  |        |
  GCTGAGGGATC           GCTGAGGGAC
@@ -130,4 +131,105 @@ TCGACTCC               CGACTCC
 
 6. Полинуклеотидкиназа (прикрепляет фосфат к 5'), затем лигаза
 7. Растворение белков и очистка ДНК
-8. ДНК-полимераза, dATP, dGTP
+8. ДНК-полимераза, dATP, dGTP - достраивание цепей
+9. Фрагментация ДНК до размеров 100-300
+
+Далее методика меняется на протокол NEBNext Ultra II ([ссылка](http://www.bea.ki.se/documents/datasheet_NEB_Ultra%20II%20DNA.pdf)).
+
+...
+
+## Промежуточная задача
+
+Поискать bridge и blunt-адаптеры в библиотеке.
+Bridge - `AGCTGAGGGATC`, blunt - `GCTGAGGGAC` и палиндром-содержащий участок `CCTCAGCGCTGAGGGAC`.
+Найти их общее количество, а также распределение по позициям в риде.
+
+Обработка была произведена с помощью скрипта `palindrome2.py`.
+
+```python
+import gzip
+import sys
+import pandas as pd
+import string
+
+def Out(found_, total_):
+    print("Found: %d | Total: %d (%4f%%)" % (found_, total_, found_ * 100 / total_), end='\r')
+
+filename = './sample.fastq.gz'
+seq = 'CCTCAGCGCTGAGGGAC'
+comment = "Double Blunt adapter"
+
+print(f"\nHi there.\nWe're looking for: {seq} ({comment})\n")
+
+input0 = gzip.open(filename, 'r')
+
+counter = 0
+total = 1
+found = 0
+tyk = 0
+df = pd.DataFrame({
+'position' : [0],
+'count' : [0]
+})
+
+for line in input0:
+
+    Out(found, total)
+
+    counter += 1
+    if counter == 5:
+        counter = 1
+    if counter < 1:
+        continue
+
+    if (counter == 2):
+        tyk = line.decode("utf-8").find(seq)
+        if (tyk == -1):
+            counter = -2
+            total += 1
+            continue
+
+
+    if counter == 4:
+        if df.loc[df['position'] == tyk].empty:
+            df = df.append({'position': tyk, 'count': 1}, ignore_index=True)
+        else:
+            df.at[df.loc[df['position'] == tyk].index[0], 'count'] += 1
+
+        found += 1
+        total += 1
+
+output0 = open('./report_' + seq + '.txt', 'w')
+df.sort_values(by=['position'], ascending=True).to_string(output0)
+print('\n')
+
+input0.close()
+output0.close()
+```
+
+Результаты:
+
+* Двойной blunt-адаптер встречается в 0.6% ридов.
+Пики наблюдаются на позициях 0 (148487), 11 (25423), небольшой пик на 18 (6799).
+
+```
+$ python3 ./palindrome_doubleblunt.py
+
+Hi there.
+We're looking for: CCTCAGCGCTGAGGGAC (Double Blunt adapter)
+
+Found: 775465 | Total: 128195238 (0.604909%)
+```
+
+* Одиночный blunt-адаптер встречается в 1.42% ридов.
+Пики на позициях 0 (412929), 7 (153163), 18 (34185).
+
+```
+$ python3 ./palindrome_blunt.py
+
+Hi there.
+We're looking for: GCTGAGGGAC (Blunt adapter)
+
+Found: 1816057 | Total: 128195238 (1.416634%)
+```
+
