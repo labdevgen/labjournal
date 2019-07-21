@@ -178,7 +178,11 @@ tnulB-Blunt
 
 Различить эти два сценария можно только анализируя буквы до/после найденного палиндрома. А в случае, если они "обкусаны", вообще нельзя.
 
-2. Длинная оверепрезентированная последовательность (**CCTCAGC***GCTGAGG*GATC**CCTCAGC***GCTGAGG*GATC**CCTCAGC**AGATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTAT) набиолее вероятно обарзовалась как две последовательности egdirB(remove T)-(remove T)Bridge-GATC, коорые слиплись друг с другом по липким GATC концам. Т.е. сначала бриджи слиплись друг с другом "спинками", а потом два таких соеденились по липкому концу.
+2. Длинная оверепрезентированная последовательность (**CCTCAGC***GCTGAGG*GATC**CCTCAGC***GCTGAGG*GATC**CCTCAGC**AGATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTAT) набиолее вероятно обарзовалась так: сначала слиплись две последовательности Bridge, образовав egdirB(remove T)-(remove T)Bridge-GATC. Затем, они слиплись друг с другом по липким GATC концам.
+
+Т.е. сначала бриджи слиплись друг с другом "спинками", а потом два таких соеденились по липкому концу.
+
+egdirB(remove T)-(remove T)Bridge-GATC-egdirB(remove T)-(remove T)Bridge
 
 ## Промежуточная задача
 
