@@ -121,21 +121,37 @@ GGATCCCTCAGCGCTGAGGGATCCCTCAGCAGATCGGAAGAGCACACGTC
 5. ДНК-лигаза, Т-tailed биотин-меченый bridge-адаптер, blunt-ended Bridge безбиотиновый
 
 ```
-bridge                 blunt
+bridge                      blunt
 
  P        Biot
  |        |
- GCTGAGGGATC           GCTGAGGGAC
-TCGACTCC               CGACTCC
+ 5-GCTGAGGGATC-3           5-GCTGAGGGAC-3
+3-TCGACTCC-5               3-CGACTCC-5
 
+reversed 
+         :egdirB             :tnulB
+    5-CCTCAGCT-3             5-CCTCAGC-3
+3-CTAGGGAGTCG-5           3-CAGGGAGTCG-5
+     |      |
+     Biot   P
+     
+     
 Products of adapter ligation:
 
-(genome-A-)-bridge/-/bridge-(T-genome):
-(A)GCTGAGG/GATC/CCTCAGC(T)
+(genome-A-)Bridge/GATC/egdirB-(T-genome):
+        (A)GCTGAGG/GATC/CCTCAGC(T)
 just sequence, palyndromic: AGCTGAGGGATCCCTCAGCT
 
-Blunt/Blunt:
-(GTC)CCTCAGC/GCTGAGG(GAC)
+(genome-A-)Bridge---egdirB(T-genome):
+        (A)GCTGAGG-CCTCAGC(T)
+just sequence, palyndromic: AGCTGAGGCCTCAGCT
+
+(remove GATC)egdirB(remove T)-(remove T)Bridge(remove GATC):
+             CCTCAGC-------------------GCTGAGG
+just sequence, palyndromic: CCTCAGCGCTGAGG
+
+       tnulB-Blunt:
+(GTC)CCTCAGC-GCTGAGG(GAC)
 Just sequence (palyndromic): GTCCCTCAGCGCTGAGGGAC
 
 ```
