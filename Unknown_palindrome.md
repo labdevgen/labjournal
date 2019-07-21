@@ -127,6 +127,17 @@ bridge                 blunt
  |        |
  GCTGAGGGATC           GCTGAGGGAC
 TCGACTCC               CGACTCC
+
+Products of adapter ligation:
+
+(genome-A-)-bridge/-/bridge-(T-genome):
+(A)GCTGAGG/GATC/CCTCAGC(T)
+just sequence, palyndromic: AGCTGAGGGATCCCTCAGCT
+
+Blunt/Blunt:
+(GTC)CCTCAGC/GCTGAGG(GAC)
+Just sequence (palyndromic): GTCCCTCAGCGCTGAGGGAC
+
 ```
 
 6. Полинуклеотидкиназа (прикрепляет фосфат к 5'), затем лигаза
