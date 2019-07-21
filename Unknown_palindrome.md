@@ -107,7 +107,9 @@ GGATCCCTCAGCGCTGAGGGATCCCTCAGCAGATCGGAAGAGCACACGTC
 
 Искомый палиндром был обнаружен в третьей (неизвестной) последовательности - GGATCC**CTCAGCGCTGAG**GGATCCCTCAGCAGATCGGAAGAGCACACGTC.
 Также выяснено, что палиндром является частью ещё более крупного палиндрома, входящего в эту последовательность - GGATCCCTCAGCGCTGAGGGATCC.
-В сочетании с вырезанным нами палиндромом он даёт ещё более длинный палиндром - CCTCAGC**GCTGAGGGATCCCTCAGCGCTGAGGGATCCCTCAGC**AGATCGGAAGAGCACACGTC.
+
+В сочетании с вырезанным нами палиндромом он даёт ещё более длинный палиндром - **CCTCAGC***GCTGAGG*GATC**CCTCAGC***GCTGAGG*GATC**CCTCAGC**AGATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTAT
+
 Было решено построить детально модель HiC и секвенирования по методике, чтобы понять, что произошло.
 
 ## Модель HiC и секвенирования
@@ -156,6 +158,7 @@ Just sequence (palyndromic): GTCCCTCAGCGCTGAGGGAC
 
 ```
 
+
 6. Полинуклеотидкиназа (прикрепляет фосфат к 5'), затем лигаза
 7. Растворение белков и очистка ДНК
 8. ДНК-полимераза, dATP, dGTP - достраивание цепей
@@ -164,6 +167,18 @@ Just sequence (palyndromic): GTCCCTCAGCGCTGAGGGAC
 Далее методика меняется на протокол NEBNext Ultra II ([ссылка](http://www.bea.ki.se/documents/datasheet_NEB_Ultra%20II%20DNA.pdf)).
 
 ...
+
+**Гипотезы**
+1. Наш палиндром `CTCAGCGCTGAG` (23% ридов) может быть либо стыком 
+egdirB(remove T)-(remove T)Bridge
+
+либо
+
+tnulB-Blunt
+
+Различить эти два сценария можно только анализируя буквы до/после найденного палиндрома. А в случае, если они "обкусаны", вообще нельзя.
+
+2. Длинная оверепрезентированная последовательность (**CCTCAGC***GCTGAGG*GATC**CCTCAGC***GCTGAGG*GATC**CCTCAGC**AGATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTAT) набиолее вероятно обарзовалась как две последовательности egdirB(remove T)-(remove T)Bridge-GATC, коорые слиплись друг с другом по липким GATC концам. Т.е. сначала бриджи слиплись друг с другом "спинками", а потом два таких соеденились по липкому концу.
 
 ## Промежуточная задача
 
@@ -263,3 +278,9 @@ Found: 1816057 | Total: 128195238 (1.416634%)
 ```
 
 ![График blunt](./scripts_results/graph_blunt_190719.png)
+
+**TODO:**
+
+поискать ешё димеры egdirb-bridge-GATC
+
+Или, что может быть ещё лучше, проанализировать контент букв до и после *CTCAGCGCTGAG*
