@@ -283,6 +283,23 @@ Found: 1816057 | Total: 128195238 (1.416634%)
 
 ![График blunt](./scripts_results/graph_blunt_190719.png)
 
+* bridge-адаптер встречается в 20% ридов.
+В начале его почти нет, повышение на позиции 8, пики на 18, 26 и 32, затем спад до конца ([данные](./scripts_results/report_palindrome_bridge_190722.txt)).
+
+```
+$ python3 ./palindrome_bridge.py
+
+Hi there.
+We're looking for: AGCTGAGGGATC (Bridge adapter)
+
+Found: 26622524 | Total: 128195238 (20.767171%)
+```
+
+![График bridge](./scripts_results/graph_bridge_190722.png)
+
+
+Таблица ODS с данными, [если вдруг понадобится](./scripts_results/palindrome2_results_190722.ods).
+
 **TODO:**
 
 поискать ешё димеры egdirb-bridge-GATC
