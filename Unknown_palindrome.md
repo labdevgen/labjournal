@@ -271,7 +271,10 @@ Found: 775465 | Total: 128195238 (0.604909%)
 
 * Одиночный blunt-адаптер встречается в 1.42% ридов.
 Пики на позициях 0, 7 и 18 ([данные](./scripts_results/report_palindrome_blunt_190719.txt)).
-
+Пик на 7 это, вероятно, 
+tnulB-Blunt
+~~(GTC)~~CCTCAGC-GCTGAGG~~(GAC)~~
+На 20, видимо, дважды повторенная такая последовательность
 ```
 $ python3 ./palindrome_blunt.py
 
